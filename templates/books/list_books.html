@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% block content %}
+<table>
+  <thead>
+    <tr>
+      <th>Book ID</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Comment</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if books %}
+      {% for book in books %}
+        <tr>
+          <td><a href="/books/detail/{{ book.book_id }}">{{ book.book_id }}</a></td>
+          <td>{{ book.title }}</td>
+          <td><a href="/books/author/{{ book.author }}">{{ book.author }}</a></td>
+          <td>{{ book.comment }}</td>
+          <td><a href="/books/detail/{{ book.book_id }}/edit">[Edit]</a></td>
+        </tr>
+      {% endfor %}
+    {% else %}
+      <tr>
+        <td colspan=4>No books.</td>
+      </tr>
+    {% endif %}
+  </tbody>
+</table>
+{% endblock %}
